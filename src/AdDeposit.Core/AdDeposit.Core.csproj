@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\AdDeposit.Core\AdDeposit.Core.csproj" />
-  </ItemGroup>
-
 </Project>
