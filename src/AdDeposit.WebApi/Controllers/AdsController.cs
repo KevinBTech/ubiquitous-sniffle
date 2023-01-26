@@ -1,3 +1,4 @@
+using AdDeposit.Core;
 using AdDeposit.Domain.Ads;
 using AdDeposit.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,15 @@ namespace AdDeposit.WebApi.Controllers
     public class AdsController : ControllerBase
     {
         private readonly AdsCreation _adsCreation;
+        private readonly IReadRepository<Ad> _adsQuery;
 
-        public AdsController(AdsCreation adsCreation)
+        public AdsController(
+            AdsCreation adsCreation,
+            IReadRepository<Ad> adsQuery
+            )
         {
             _adsCreation = adsCreation;
+            _adsQuery = adsQuery;
         }
 
         [HttpPost]
@@ -35,6 +41,19 @@ namespace AdDeposit.WebApi.Controllers
             {
                 return BadRequest("The ad has not been created.");
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get(long adId)
+        {
+            var existingAd = await _adsQuery.GetAsync(adId);
+
+            if (existingAd != null)
+            {
+                return Ok(existingAd);
+            }
+
+            return NotFound();
         }
 
         public sealed class AdToAdd

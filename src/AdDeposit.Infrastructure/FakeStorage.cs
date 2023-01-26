@@ -2,10 +2,12 @@
 
 namespace AdDeposit.Infrastructure
 {
-    public sealed class FakeStorage<TEntity> : IWriteRepository<TEntity>
+    public sealed class FakeStorage<TEntity> :
+        IWriteRepository<TEntity>,
+        IReadRepository<TEntity>
         where TEntity : class, IEntity
     {
-        private readonly List<TEntity> _entities = new();
+        private static readonly List<TEntity> _entities = new();
 
         public Task AddAsync(TEntity entity)
         {
@@ -13,6 +15,11 @@ namespace AdDeposit.Infrastructure
             _entities.Add(entity);
 
             return Task.CompletedTask;
+        }
+
+        public Task<TEntity?> GetAsync(long id)
+        {
+            return Task.FromResult(_entities.FirstOrDefault(e => e.Id == id));
         }
     }
 }
