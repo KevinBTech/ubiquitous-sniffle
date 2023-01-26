@@ -48,7 +48,8 @@ namespace AdDeposit.WebApi.Controllers
         {
             var existingAd = await _adsQuery.GetAsync(adId);
 
-            if (existingAd != null)
+            if (existingAd != null &&
+                existingAd.State == AdState.Published)
             {
                 return Ok(existingAd);
             }

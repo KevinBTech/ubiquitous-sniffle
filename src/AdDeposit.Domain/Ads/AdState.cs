@@ -2,6 +2,7 @@
 {
     public enum AdState : byte
     {
-        WaitingForValidation = 0
+        WaitingForValidation = 0,
+        Published
     }
 }
