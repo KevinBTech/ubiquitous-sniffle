@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdDeposit.Domain", "src\AdD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdDeposit.Core", "src\AdDeposit.Core\AdDeposit.Core.csproj", "{CCD91C48-A98B-4E10-8C56-AD34C3736A63}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdDeposit.Infrastructure", "src\AdDeposit.Infrastructure\AdDeposit.Infrastructure.csproj", "{63DE6B28-5FD1-42C1-93F6-5BB945270DCC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{CCD91C48-A98B-4E10-8C56-AD34C3736A63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCD91C48-A98B-4E10-8C56-AD34C3736A63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCD91C48-A98B-4E10-8C56-AD34C3736A63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63DE6B28-5FD1-42C1-93F6-5BB945270DCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63DE6B28-5FD1-42C1-93F6-5BB945270DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63DE6B28-5FD1-42C1-93F6-5BB945270DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63DE6B28-5FD1-42C1-93F6-5BB945270DCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

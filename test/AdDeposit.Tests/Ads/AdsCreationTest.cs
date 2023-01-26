@@ -9,7 +9,7 @@ namespace AdDeposit.Tests.Ads
         [Fact]
         public async Task ExecuteAsync_Must_CreateANewAd()
         {
-            var adsCreation = new AdsCreation(new FakeStorage<Ad>());
+            var adsCreation = new AdsCreation(new FakeRepository<Ad>());
 
             var createdAd = await adsCreation.ExecuteAsync(
                 new AdsToCreate(
@@ -23,7 +23,7 @@ namespace AdDeposit.Tests.Ads
         }
     }
 
-    public sealed class FakeStorage<TEntity> : IWriteRepository<TEntity>
+    public sealed class FakeRepository<TEntity> : IWriteRepository<TEntity>
         where TEntity : class, IEntity
     {
         private readonly List<TEntity> _entities = new();

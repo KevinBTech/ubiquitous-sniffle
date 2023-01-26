@@ -1,3 +1,7 @@
+using AdDeposit.Core;
+using AdDeposit.Domain.Ads;
+using AdDeposit.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddSingleton(typeof(IWriteRepository<>), typeof(FakeStorage<>));
+
+builder.Services.AddScoped<AdsCreation>();
 
 var app = builder.Build();
 
