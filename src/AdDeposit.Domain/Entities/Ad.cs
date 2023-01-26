@@ -1,4 +1,5 @@
 ﻿using AdDeposit.Core;
+using AdDeposit.Domain.Ads;
 
 namespace AdDeposit.Domain.Entities
 {
@@ -10,11 +11,14 @@ namespace AdDeposit.Domain.Entities
         public string Description { get; private set; }
         public Localization Localization { get; private set; }
 
+        public AdState State { get; private set; }
+
         public Ad(string title, string description, Localization localization)
         {
             Title = title;
             Description = description;
             Localization = localization;
+            State = AdState.WaitingForValidation;
         }
     }
 }
