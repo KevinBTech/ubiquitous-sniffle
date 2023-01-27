@@ -34,7 +34,7 @@ namespace AdDeposit.Tests.Ads
                 );
 
             Assert.NotNull(createdAd);
-            Assert.Equal(AdState.WaitingForValidation, createdAd.State);
+            Assert.Equal(AdState.WaitingForValidation, createdAd.CurrentState);
         }
     }
 }

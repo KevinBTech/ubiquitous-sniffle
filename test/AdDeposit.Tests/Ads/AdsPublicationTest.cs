@@ -19,7 +19,7 @@ namespace AdDeposit.Tests.Ads
             var ad = await adsPublication.ExecuteAsync(new AdToPublish(1));
 
             Assert.NotNull(ad);
-            Assert.Equal(AdState.Published, ad.State);
+            Assert.Equal(AdState.Published, ad.CurrentState);
         }
 
         [Fact]

@@ -11,7 +11,7 @@ namespace AdDeposit.Domain.Entities
         public string Description { get; private set; }
         public Localization Localization { get; private set; }
 
-        public AdState State { get; private set; }
+        public AdState CurrentState { get; private set; }
 
         public IList<AdState> AdStatesHistory { get; private set; }
 
@@ -20,14 +20,14 @@ namespace AdDeposit.Domain.Entities
             Title = title;
             Description = description;
             Localization = localization;
-            State = AdState.WaitingForValidation;
+            CurrentState = AdState.WaitingForValidation;
             AdStatesHistory = new List<AdState>();
-            this.UpdateState(State);
+            this.UpdateState(CurrentState);
         }
 
         public void UpdateState(AdState newState)
         {
-            State = newState;
+            CurrentState = newState;
 
             AdStatesHistory.Add(newState);
         }
