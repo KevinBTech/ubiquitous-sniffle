@@ -1,5 +1,4 @@
 using AdDeposit.Core;
-using AdDeposit.Domain.Ads;
 using AdDeposit.Domain.Ads.Wheather;
 using AdDeposit.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;

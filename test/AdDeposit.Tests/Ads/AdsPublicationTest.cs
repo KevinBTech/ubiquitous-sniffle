@@ -12,7 +12,8 @@ namespace AdDeposit.Tests.Ads
             await fake.AddAsync(new Ad(
                     "Appartement 3 pièces 75m2",
                     "1 SDB, 2 CH (15m2 et 10m2), 1 SAL, 1 CUI",
-                    new Localization("5 rue de truc", "00000", "STRASBOURG", "FRANCE"))
+                    new Localization("5 rue de truc", "00000", "STRASBOURG", "FRANCE"),
+                    AdType.Parking)
                 );
             var adsPublication = new AdsPublication(fake, fake);
 
@@ -23,12 +24,12 @@ namespace AdDeposit.Tests.Ads
         }
 
         [Fact]
-        public void ExecuteAsync_MustNot_Publish_NotExistingAd()
+        public async Task ExecuteAsync_MustNot_Publish_NotExistingAd()
         {
             var fake = new FakeRepository<Ad>();
             var adsPublication = new AdsPublication(fake, fake);
 
-            Assert.ThrowsAsync<InvalidOperationException>(async () => await adsPublication.ExecuteAsync(new AdToPublish(1)));
+            await Assert.ThrowsAsync<InvalidOperationException>(async () => await adsPublication.ExecuteAsync(new AdToPublish(1)));
         }
     }
 }

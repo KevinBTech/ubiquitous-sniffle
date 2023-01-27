@@ -26,20 +26,23 @@ namespace AdDeposit.WebApi.Controllers
         public async Task<IActionResult> Create(
                     [Required] AdToAdd adToCreate)
         {
-            var createdAd = await _adsCreation.ExecuteAsync(
-                new AdsToCreate(
-                    adToCreate.Title,
-                    adToCreate.Description,
-                    adToCreate.Localization)
-                );
-
-            if (createdAd != null)
+            try
             {
+                var createdAd = await _adsCreation.ExecuteAsync(
+                    new AdsToCreate(
+                        adToCreate.Title,
+                        adToCreate.Description,
+                        adToCreate.Localization,
+                        adToCreate.AdType
+                        )
+                    );
+
                 return Ok(createdAd.Id);
             }
-            else
+            catch (InvalidOperationException ex)
             {
-                return BadRequest("The ad has not been created.");
+                var message = ex.Message;
+                return BadRequest(message);
             }
         }
 
@@ -67,6 +70,9 @@ namespace AdDeposit.WebApi.Controllers
 
             [Required]
             public Localization Localization { get; set; } = null!;
+
+            [Required]
+            public string AdType { get; set; } = null!;
         }
     }
 }
