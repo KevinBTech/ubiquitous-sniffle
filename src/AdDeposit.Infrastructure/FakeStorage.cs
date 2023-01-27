@@ -2,7 +2,7 @@
 
 namespace AdDeposit.Infrastructure
 {
-    public sealed class FakeStorage<TEntity> :
+    internal sealed class FakeStorage<TEntity> :
         IWriteRepository<TEntity>,
         IReadRepository<TEntity>
         where TEntity : class, IEntity

@@ -1,4 +1,3 @@
-using AdDeposit.Core;
 using AdDeposit.Domain.Ads;
 using AdDeposit.Infrastructure;
 
@@ -11,11 +10,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton(typeof(IWriteRepository<>), typeof(FakeStorage<>));
-builder.Services.AddSingleton(typeof(IReadRepository<>), typeof(FakeStorage<>));
-
 builder.Services.AddScoped<AdsCreation>();
 builder.Services.AddScoped<AdsPublication>();
+builder.Services.AddRepositories();
+builder.Services.AddAdWheather();
 
 var app = builder.Build();
 
