@@ -4,5 +4,7 @@
         where TEntity : class, IEntity
     {
         Task AddAsync(TEntity entity);
+
+        Task UpdateAsync(TEntity entity);
     }
 }

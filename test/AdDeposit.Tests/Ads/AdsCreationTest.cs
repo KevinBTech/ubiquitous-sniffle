@@ -1,4 +1,3 @@
-using AdDeposit.Core;
 using AdDeposit.Domain.Ads;
 using AdDeposit.Domain.Entities;
 
@@ -36,20 +35,6 @@ namespace AdDeposit.Tests.Ads
 
             Assert.NotNull(createdAd);
             Assert.Equal(AdState.WaitingForValidation, createdAd.State);
-        }
-    }
-
-    public sealed class FakeRepository<TEntity> : IWriteRepository<TEntity>
-        where TEntity : class, IEntity
-    {
-        private readonly List<TEntity> _entities = new();
-
-        public Task AddAsync(TEntity entity)
-        {
-            entity.Id = _entities.Count + 1;
-            _entities.Add(entity);
-
-            return Task.CompletedTask;
         }
     }
 }

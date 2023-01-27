@@ -13,12 +13,23 @@ namespace AdDeposit.Domain.Entities
 
         public AdState State { get; private set; }
 
+        public IList<AdState> AdStatesHistory { get; private set; }
+
         public Ad(string title, string description, Localization localization)
         {
             Title = title;
             Description = description;
             Localization = localization;
             State = AdState.WaitingForValidation;
+            AdStatesHistory = new List<AdState>();
+            this.UpdateState(State);
+        }
+
+        public void UpdateState(AdState newState)
+        {
+            State = newState;
+
+            AdStatesHistory.Add(newState);
         }
     }
 }

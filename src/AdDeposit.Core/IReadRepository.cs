@@ -1,4 +1,6 @@
-﻿namespace AdDeposit.Core
+﻿using System.Linq.Expressions;
+
+namespace AdDeposit.Core
 {
     public interface IReadRepository<TEntity>
         where TEntity : class, IEntity

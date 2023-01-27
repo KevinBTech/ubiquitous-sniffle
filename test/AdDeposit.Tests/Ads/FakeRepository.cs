@@ -1,13 +1,13 @@
 ﻿using AdDeposit.Core;
 
-namespace AdDeposit.Infrastructure
+namespace AdDeposit.Tests.Ads
 {
-    public sealed class FakeStorage<TEntity> :
+    public sealed class FakeRepository<TEntity> :
         IWriteRepository<TEntity>,
         IReadRepository<TEntity>
         where TEntity : class, IEntity
     {
-        private static readonly List<TEntity> _entities = new();
+        private readonly List<TEntity> _entities = new();
 
         public Task AddAsync(TEntity entity)
         {

@@ -15,6 +15,7 @@ builder.Services.AddSingleton(typeof(IWriteRepository<>), typeof(FakeStorage<>))
 builder.Services.AddSingleton(typeof(IReadRepository<>), typeof(FakeStorage<>));
 
 builder.Services.AddScoped<AdsCreation>();
+builder.Services.AddScoped<AdsPublication>();
 
 var app = builder.Build();
 
